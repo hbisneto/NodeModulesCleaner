@@ -1,11 +1,10 @@
-# 🧹 NodeModulesCleaner (nmc)
+# NodeModulesCleaner (nmc)
 
 ![CI](https://github.com/hbisneto/NodeModulesCleaner/actions/workflows/tests.yml/badge.svg)
 ![License](https://img.shields.io/github/license/hbisneto/NodeModulesCleaner)
 
-![Python](https://img.shields.io/pypi/pyversions/NodeModulesCleaner)
-![PyPI](https://img.shields.io/pypi/v/NodeModulesCleaner)
-![Downloads](https://img.shields.io/pypi/dm/NodeModulesCleaner)
+[![PyPI](https://img.shields.io/pypi/v/NodeModulesCleaner?logo=python&logoColor=white&color=blue)](https://pypi.org/project/nodemodulescleaner/)
+[![Python](https://img.shields.io/badge/Python-%3E=3.10-blue)](https://python.org/)
 
 ![Issues](https://img.shields.io/github/issues/hbisneto/NodeModulesCleaner)
 ![Stars](https://img.shields.io/github/stars/hbisneto/NodeModulesCleaner?style=social)
