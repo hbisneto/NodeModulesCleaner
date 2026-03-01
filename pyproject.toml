@@ -1,0 +1,12 @@
+[project]
+name = "node-modules-clearer"
+version = "0.1.0"
+description = "CLI para limpeza automática de node_modules"
+authors = [{ name = "BisnetoDev" }]
+dependencies = ["tqdm"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+nmc = "nmc.cli:main"
