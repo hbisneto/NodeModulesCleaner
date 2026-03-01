@@ -9,6 +9,8 @@
 ![Stars](https://img.shields.io/github/stars/hbisneto/NodeModulesCleaner?style=social)
 ![Issues](https://img.shields.io/github/issues/hbisneto/NodeModulesCleaner)
 
+![Coverage](https://codecov.io/gh/hbisneto/node-modules-cleaner/branch/main/graph/badge.svg)
+
 
 ```
 apt install python3.10-venv
