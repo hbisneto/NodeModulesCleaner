@@ -1,9 +1,8 @@
+from argparse import Namespace
+from nmc.core import find_node_modules, cleanup
+from pathlib import Path
 import os
 import time
-import shutil
-from pathlib import Path
-from nmc.cli import main
-# from .cli import main
 
 
 def create_fake_project(base: Path, days_old=40):
@@ -11,7 +10,6 @@ def create_fake_project(base: Path, days_old=40):
     nm = proj / "node_modules"
 
     nm.mkdir(parents=True)
-
     fake_file = nm / "index.js"
     fake_file.write_text("console.log('test')")
 
@@ -21,21 +19,19 @@ def create_fake_project(base: Path, days_old=40):
     return nm
 
 
-def test_cleanup(tmp_path, monkeypatch):
+def test_cleanup(tmp_path):
     nm = create_fake_project(tmp_path)
 
-    monkeypatch.setattr("sys.argv", ["nmc", str(tmp_path), "--days", "30"])
-
-    main()
+    found = find_node_modules(tmp_path, days=30, min_size_mb=0)
+    cleanup(found, dry_run=False)
 
     assert not nm.exists()
 
 
-def test_dry_run(tmp_path, monkeypatch):
+def test_dry_run(tmp_path):
     nm = create_fake_project(tmp_path)
 
-    monkeypatch.setattr("sys.argv", ["nmc", str(tmp_path), "--dry-run"])
-
-    main()
+    found = find_node_modules(tmp_path, days=30, min_size_mb=0)
+    cleanup(found, dry_run=True)
 
     assert nm.exists()

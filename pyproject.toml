@@ -1,12 +1,19 @@
 [project]
 name = "node-modules-clearer"
 version = "0.1.0"
-description = "CLI para limpeza automática de node_modules"
-authors = [{ name = "BisnetoDev" }]
-dependencies = ["tqdm"]
+description = "Automatic cleanup of forgotten node_modules directories"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "filesystempro>=3.0.0",
+]
 
 [project.optional-dependencies]
-dev = ["pytest", "pytest-cov"]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov",
+    "coverage",
+]
 
 [project.scripts]
 nmc = "nmc.cli:main"
