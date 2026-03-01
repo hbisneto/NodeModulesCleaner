@@ -6,7 +6,7 @@ authors = [{ name = "BisnetoDev" }]
 dependencies = ["tqdm"]
 
 [project.optional-dependencies]
-dev = ["pytest"]
+dev = ["pytest", "pytest-cov"]
 
 [project.scripts]
 nmc = "nmc.cli:main"
