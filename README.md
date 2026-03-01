@@ -1,6 +1,6 @@
 # NodeModulesCleaner
 
-![CI](https://github.com/SEU_USUARIO/NodeModulesCleaner/actions/workflows/tests.yml/badge.svg)
+![CI](https://github.com/hbisneto/NodeModulesCleaner/actions/workflows/tests.yml/badge.svg)
 ![PyPI](https://img.shields.io/pypi/v/NodeModulesCleaner)
 ![Python](https://img.shields.io/pypi/pyversions/NodeModulesCleaner)
 ![License](https://img.shields.io/github/license/hbisneto/NodeModulesCleaner)
