@@ -10,7 +10,7 @@
 ![Issues](https://img.shields.io/github/issues/hbisneto/NodeModulesCleaner)
 
 ![Coverage](https://codecov.io/gh/hbisneto/node-modules-cleaner/branch/main/graph/badge.svg)
-
+[![codecov](https://codecov.io/github/hbisneto/NodeModulesCleaner/graph/badge.svg?token=TPY9K1INYE)](https://codecov.io/github/hbisneto/NodeModulesCleaner)
 
 ```
 apt install python3.10-venv
