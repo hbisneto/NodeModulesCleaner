@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/github/license/hbisneto/NodeModulesCleaner)
 
 ![Downloads](https://img.shields.io/pypi/dm/NodeModulesCleaner)
-![Stars](https://img.shields.io/github/stars/hbisneto/node-modules-clearer?style=social)
+![Stars](https://img.shields.io/github/stars/hbisneto/NodeModulesCleaner?style=social)
 ![Issues](https://img.shields.io/github/issues/hbisneto/NodeModulesCleaner)
 
 
