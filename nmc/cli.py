@@ -49,16 +49,14 @@ def run(args) -> int:
     print("\n✅ Finalized!")
     print(f"📦 Directories removed: {len(found)}")
     print(f"💾 Space freed: {format_size(total_space)}")
-
     return 0
-
 
 def main():
     parser = argparse.ArgumentParser(
         description="🧹 Automatic cleanup of forgotten node_modules"
     )
 
-    # 
+    # Version info
     parser.add_argument(
         "-v", "--version",
         action="store_true",
@@ -103,7 +101,6 @@ def main():
 
     args = parser.parse_args()
     raise SystemExit(run(args))
-
 
 if __name__ == "__main__":
     main()
