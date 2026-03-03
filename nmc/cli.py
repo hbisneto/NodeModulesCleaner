@@ -1,7 +1,7 @@
 import argparse
 from pathlib import Path
+import nmc.about as about
 from nmc.core import find_node_modules, cleanup, format_size
-
 
 def run(args) -> int:
     base_path = Path(args.path).expanduser().resolve()
@@ -9,6 +9,10 @@ def run(args) -> int:
     if not base_path.exists():
         print("❌ Invalid path.")
         return 1
+    
+    if args.version:
+        about.show_version()
+        return 0
 
     print(f"\n🔍 Scanning: {base_path}")
     print(f"🕒 Filter: +{args.days} days | 📦 > {args.min_size} MB\n")
@@ -52,6 +56,13 @@ def run(args) -> int:
 def main():
     parser = argparse.ArgumentParser(
         description="🧹 Automatic cleanup of forgotten node_modules"
+    )
+
+    # 
+    parser.add_argument(
+        "-v", "--version",
+        action="store_true",
+        help="Show version information"
     )
 
     # Where to scan

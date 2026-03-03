@@ -1,9 +1,9 @@
 [project]
 name = "node-modules-clearer"
-version = "0.1.0"
+version = "1.0.0.2"
 description = "Automatic cleanup of forgotten node_modules directories"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
     "filesystempro>=3.0.0",
 ]
