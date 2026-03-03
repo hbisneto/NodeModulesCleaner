@@ -1,6 +1,6 @@
 [project]
 name = "node-modules-clearer"
-version = "1.0.0.2"
+version = "1.0.1.0"
 description = "Automatic cleanup of forgotten node_modules directories"
 readme = "README.md"
 requires-python = ">=3.10"
