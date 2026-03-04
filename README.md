@@ -92,13 +92,15 @@ nmc ~ --days 60 --min-size 100 -y
 usage: nmc [path] [options]
 
 positional arguments:
-  path                Directory to scan (default: current directory)
+  path                    Directory to scan (default: current directory)
 
 options:
-  --days N            Ignore node_modules accessed within the last N days (default: 30)
-  --min-size MB       Minimum size in MB (default: 0)
-  --dry-run           Simulate the cleanup without deleting anything
-  -y, --yes           Automatically confirm deletion (non-interactive mode)
+  -h, --help              show this help message and exit
+  -v, --version           Show version information
+  --days DAYS             Ignore node_modules accessed within the last N days (default: 30)
+  --min-size MIN_SIZE     Minimum size in MB (default: 0)
+  --dry-run               Simulate the cleanup without deleting anything
+  -y, --yes               Automatically confirm deletion
 ```
 
 ---
