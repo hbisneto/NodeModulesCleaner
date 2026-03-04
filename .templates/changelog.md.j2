@@ -23,7 +23,7 @@ e este projeto adota [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 {% endif %}
 
 {% for release in releases %}
-## [{{ release.version }}] - {{ release.date }}
+## nmc [{{ release.version }}] - {{ release.date }}
 {% for section, commits in release.sections.items() %}
 {% if section == "feat" %}
 ### Added

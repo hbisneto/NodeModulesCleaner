@@ -1,7 +1,12 @@
+from importlib.metadata import version, PackageNotFoundError
 import platform
 
 def show_version():
-    VERSION = "1.1.1"
+    try:
+        VERSION = version("nodemodulescleaner")
+    except PackageNotFoundError:
+        VERSION = f'dev-{version("nodemodulescleaner")}'
+    
     PYTHON_VERSION = platform.python_version()
 
     banner = rf"""
