@@ -1,0 +1,40 @@
+# Changelog
+
+Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
+
+O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),  
+e este projeto adota [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+{% if unreleased %}
+## [Unreleased]
+{% for section, commits in unreleased.items() %}
+{% if section == "feat" %}
+### Added
+{% elif section == "fix" %}
+### Fixed
+{% else %}
+### {{ section | capitalize }}
+{% endif %}
+{% for commit in commits %}
+- {{ commit.message | capitalize }} ({{ commit.sha[:7] }})
+{% endfor %}
+
+{% endfor %}
+{% endif %}
+
+{% for release in releases %}
+## [{{ release.version }}] - {{ release.date }}
+{% for section, commits in release.sections.items() %}
+{% if section == "feat" %}
+### Added
+{% elif section == "fix" %}
+### Fixed
+{% else %}
+### {{ section | capitalize }}
+{% endif %}
+{% for commit in commits %}
+- {{ commit.message | capitalize }} ({{ commit.sha[:7] }})
+{% endfor %}
+
+{% endfor %}
+{% endfor %}

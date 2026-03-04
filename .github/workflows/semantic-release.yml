@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   release:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,19 +21,20 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'  # Or 3.12
+          python-version: '3.12'
 
       - name: Install python-semantic-release
         run: pip install "python-semantic-release[github]"
 
       - name: Run semantic-release
-        run: semantic-release version --push --no-ci --verbose
+        id: semantic-release
+        run: semantic-release version --push --no-ci --vcs-release --verbose
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Opcional: Publish to PyPI
-      # - name: Build & publish
-      #   if: success()  # Or another condition to ensure this runs only on successful release
+      # Optional: Publish to PyPI
+      # - name: Build & publish to PyPI
+      #   if: steps.semantic-release.outputs.released == 'true'
       #   run: |
       #     pip install build twine
       #     python -m build

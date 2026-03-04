@@ -7,30 +7,24 @@ requires-python = ">=3.10"
 dependencies = [
     "filesystempro>=3.0.0",
 ]
-
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
     "pytest-cov",
     "coverage",
 ]
-
 [project.scripts]
 nmc = "nmc.cli:main"
 
 [tool.semantic_release]
-version_toml = ["pyproject.toml:project.version"]   # atualiza a versão no pyproject
+version_toml = ["pyproject.toml:project.version"]
 commit_parser = "conventional"
 parse_squash_commits = true
 ignore_merge_commits = true
 
-# Changelog
-[tool.semantic_release.changelog.default_templates]
-changelog_file = "CHANGELOG.md"
-output_format = "md"
-
-# Ignora commits que não interessam pro changelog
 [tool.semantic_release.changelog]
+template_dir = ".templates"
+mode = "update"
 exclude_commit_patterns = [
     'chore(?:\([^)]*?\))?: .+',
     'ci(?:\([^)]*?\))?: .+',
@@ -39,6 +33,9 @@ exclude_commit_patterns = [
     'test(?:\([^)]*?\))?: .+',
 ]
 
-# Branch principal de release
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG.md"
+output_format = "md"
+
 [tool.semantic_release.branches.main]
 match = "main"
