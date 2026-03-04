@@ -1,0 +1,41 @@
+name: Semantic Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  issues: write     # optional, to comment in PRs about the release
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # essencial to see the entire commit history for semantic-release
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install python-semantic-release
+        run: pip install "python-semantic-release[github]"
+
+      - name: Run semantic-release
+        run: semantic-release version --push --verbose
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # For PyPI publishing
+          # PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+
+      # Optional: publish to PyPI (Uncomment)
+      # - name: Build & publish to PyPI
+      #   if: steps.semantic-release.outputs.released == 'true'  # Only publish if a new release was made
+      #   run: |
+      #     pip install build twine
+      #     python -m build
+      #     twine upload dist/* --username __token__ --password ${{ secrets.PYPI_API_TOKEN }}
