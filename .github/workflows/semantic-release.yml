@@ -1,0 +1,41 @@
+name: Semantic Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install python-semantic-release
+        run: pip install "python-semantic-release[github]"
+
+      - name: Run semantic-release
+        id: semantic-release
+        run: semantic-release version --push --no-ci --vcs-release --verbose
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Optional: Publish to PyPI
+      # - name: Build & publish to PyPI
+      #   if: steps.semantic-release.outputs.released == 'true'
+      #   run: |
+      #     pip install build twine
+      #     python -m build
+      #     twine upload dist/* -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}

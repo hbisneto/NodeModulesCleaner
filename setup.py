@@ -18,7 +18,7 @@ LONG_DESC = (HERE / "README.md").read_text(encoding="utf-8")
 # Project metadata and configuration
 setup(
     name="nodemodulescleaner",                          # Public name of the package
-    version="1.0.0.1",                                    # Version number
+    version="1.0.1.0",                                    # Version number
     author="Heitor Bisneto",
     author_email="heitor.bardemaker@live.com",
     description="Automatic cleanup of forgotten node_modules directories",
