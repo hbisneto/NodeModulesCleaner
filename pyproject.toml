@@ -1,19 +1,41 @@
 [project]
-name = "node-modules-clearer"
-version = "0.1.0"
+name = "nodemodulescleaner"
+version = "1.0.1"
 description = "Automatic cleanup of forgotten node_modules directories"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
     "filesystempro>=3.0.0",
 ]
-
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
     "pytest-cov",
     "coverage",
 ]
-
 [project.scripts]
 nmc = "nmc.cli:main"
+
+[tool.semantic_release]
+version_toml = ["pyproject.toml:project.version"]
+commit_parser = "conventional"
+parse_squash_commits = true
+ignore_merge_commits = true
+
+[tool.semantic_release.changelog]
+template_dir = ".templates"
+mode = "update"
+exclude_commit_patterns = [
+    'chore(?:\([^)]*?\))?: .+',
+    'ci(?:\([^)]*?\))?: .+',
+    'refactor(?:\([^)]*?\))?: .+',
+    'style(?:\([^)]*?\))?: .+',
+    'test(?:\([^)]*?\))?: .+',
+]
+
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG.md"
+output_format = "md"
+
+[tool.semantic_release.branches.main]
+match = "main"
