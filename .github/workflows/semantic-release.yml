@@ -32,7 +32,19 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Opcional: Publish to PyPI (descomente quando tiver o token)
+      - name: Customize Release Title
+        if: steps.semantic-release.outputs.released == 'true'
+        run: |
+          # Extract the new tag/version from the output of pyproject.toml
+          NEW_VERSION=$(python -c "import tomllib; with open('pyproject.toml', 'rb') as f: data = tomllib.load(f); print(data['project']['version'])")
+          NEW_TAG="v${NEW_VERSION}"
+
+          # Update the latest release title
+          gh release edit "$NEW_TAG" --title "nmc $NEW_TAG"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Optional: Publish to PyPI
       # - name: Build & publish to PyPI
       #   if: steps.semantic-release.outputs.released == 'true'
       #   run: |
