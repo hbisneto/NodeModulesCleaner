@@ -1,7 +1,7 @@
 import platform
 
 def show_version():
-    VERSION = "1.0.1.0"
+    VERSION = "1.1.1"
     PYTHON_VERSION = platform.python_version()
 
     banner = rf"""
